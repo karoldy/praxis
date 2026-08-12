@@ -1,0 +1,13 @@
+{
+  "name": "praxis",
+  "private": true,
+  "scripts": {
+    "api": "pnpm --filter @praxis/api",
+    "web": "pnpm --filter @praxis/web",
+    "shared": "pnpm --filter @praxis/shared"
+  },
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=9"
+  }
+}
