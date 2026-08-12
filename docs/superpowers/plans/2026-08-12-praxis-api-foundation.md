@@ -221,7 +221,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>"
     "@nestjs/platform-express": "^11.0.0",
     "better-auth": "^1.0.0",
     "dotenv": "^16.4.0",
-    "drizzle-orm": "^0.42.0",
+    "drizzle-orm": "^0.45.2",
     "pg": "^8.13.0",
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.0",
