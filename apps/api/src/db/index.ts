@@ -1,15 +1,16 @@
-// Temporary placeholder for Task 2 — replaced by the real Drizzle client
-// (drizzle-orm/node-postgres + schema) in Task 3. Reads DATABASE_URL at
-// module load time, so `import 'dotenv/config'` in main.ts must run first.
+import { drizzle } from 'drizzle-orm/node-postgres';
 import { Pool } from 'pg';
+import * as schema from './schema/index.js';
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
+export const db = drizzle(pool, { schema });
+
 export const DRIZZLE = Symbol('DRIZZLE');
 
 export const databaseProvider = {
   provide: DRIZZLE,
-  useValue: pool,
+  useValue: db,
 };
