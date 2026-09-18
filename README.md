@@ -19,20 +19,25 @@
 
 | 层 | 选型 |
 |----|------|
-| 后端 | Java · Spring Boot |
+| 后端 | NestJS · TypeScript |
 | 数据库 | PostgreSQL |
+| ORM | Drizzle |
+| 认证 | Better Auth + Drizzle |
 | Web 前端 | Vite + React + TypeScript |
 | App | React Native (Expo) — 目录预留 |
 
 ## 目录结构
 
+> **不是 Monorepo / 工作区(workspace)架构。** 后端与前端是各自独立的工程,不通过 pnpm workspace 或共享包统一管理。目录只是把相关代码放在同一仓库下,各自持有独立的构建与依赖管理。
+
 ```text
-apps/         后端与前端应用
-apps/api      Spring Boot API
-apps/web      Vite + React（Web 前端）
-apps/mobile   React Native (Expo) — 预留
-docs/         设计与品牌文档
+api/         NestJS API  (Drizzle + Better Auth)
+web/         Vite + React (独立工程, 独立 package.json)
+app/         React Native (Expo) — 预留
+docs/        设计与品牌文档
 ```
+
+后端与前端之间只通过 HTTP 契约(OpenAPI)衔接,不共享代码包。
 
 ## 文档
 
