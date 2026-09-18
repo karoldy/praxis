@@ -92,6 +92,21 @@ praxis/
 
 **resource_tags**：通用多对多打标签：`resource_type`(enum)、`resource_id`、`tag_id`。
 
+**audit_logs（审计日志）**
+| 字段 | 说明 |
+|------|------|
+| id | PK |
+| actor_id | FK → Better Auth user.id，操作者（超管恢复也记录） |
+| action | 操作枚举：create / update / delete / restore / upload / import |
+| resource_type | 资源类型：note / question / paper / document / tag 等 |
+| resource_id | 目标资源 id |
+| detail | 详情（JSON，如变更摘要、from/to），可空 |
+| created_at | 记录时间 |
+
+> `audit_logs` 是**不做软删除**的日志表（历史事实，硬保留）。重点记录**软删除与恢复操作**（普通用户可删除、仅超管可恢复，不对称权限需可追溯）。不属于业务主表，不含 `created_by`，用 `actor_id` 记录操作者。
+
+> **应用运行日志**（相对审计日志）：NestJS 内置 Logger + `pino-http`/`morgan`，打印请求/响应、错误堆栈、警告等，**滚动写入本地文件**（按日期/大小分割，仅服务器本地，不入库）。审计日志存表，应用运行日志存文件，两者分离。
+
 ### 5.2 学习中心（笔记）
 
 **notes（主）**
@@ -178,6 +193,7 @@ praxis/
 BetterAuth user ─┬─< resource_tags（通用标签）
                  ├─< notes / questions / papers / documents (created_by)
                  ├─< attempts (user_id)
+                 ├─< audit_logs (actor_id)
                  └─| user_profile (userId, 超管唯一)
 
 question_banks ─< questions ─< options
@@ -240,9 +256,10 @@ notes ─< note_folders (folder_id, 笔记归入文件夹, 支持导入重建目
 
 ## 10. 实施范围（本轮）
 
-- 建好三大中心（学习/考试/文档）+ 公共层的数据模型（Drizzle schema）
+- 建好三大中心（学习/考试/文档）+ 公共层的数据模型（Drizzle schema，含 audit_logs）
 - 数据库迁移初始脚本
 - Better Auth + 单超管引导（首个用户设为超管）
+- 日志：应用运行日志（pino/morgan 滚动写本地文件）+ 审计日志（audit_logs 表，重点记录软删除/恢复）
 - NestJS 模块骨架：auth / notes / exams / documents / common
 - 前端：Vite + React 工程初始化，M3（#094dcc）主题 + shadcn/ui + 响应式布局 + i18n + 三大中心页面
 
