@@ -1,19 +1,24 @@
-# Dependencies
+# --- Node / 前端 ---
 node_modules/
-
-# Build output
 dist/
 build/
-*.tsbuildinfo
-
-# Logs
-*.log
-npm-debug.log*
-
-# Env
+*.local
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
 
-# OS
+# --- Java / Spring Boot ---
+target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+.idea/
+*.iml
+
+# --- OS ---
 .DS_Store
+
+# --- 日志 / 运行产物 ---
+*.log
+coverage/
+reports/
