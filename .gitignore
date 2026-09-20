@@ -20,5 +20,7 @@ target/
 
 # --- 日志 / 运行产物 ---
 *.log
+*.tsbuildinfo
+logs/
 coverage/
 reports/

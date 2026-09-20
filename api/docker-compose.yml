@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    container_name: praxis-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: praxis
+    ports:
+      # 设计 §7：不使用默认端口 5432，映射到高位端口 15432
+      - '15432:5432'
+    volumes:
+      - praxis-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d praxis']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  praxis-pgdata:
