@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/*
+ * 知行 M3（Material Design v3 / Material You）设计 token（设计 §8.2）。
+ * primary = #094dcc；其余 surface / onSurface 等由 #094dcc 派生。
+ * 变量名遵循 shadcn/ui 约定，供未来 shadcn 组件（bg-primary 等）与 M3 视觉融合。
+ */
+:root {
+  --radius: 0.75rem;
+
+  /* M3 primary scale（#094dcc 派生） */
+  --primary: #094dcc;
+  --primary-strong: #07409f;
+  --on-primary: #ffffff;
+  --primary-container: #d9e2ff;
+  --on-primary-container: #001758;
+
+  --secondary: #565e71;
+  --on-secondary: #ffffff;
+  --secondary-container: #dae2f9;
+  --on-secondary-container: #131c2b;
+
+  --surface: #fcf8ff;
+  --surface-container: #f1eef7;
+  --on-surface: #1a1c1e;
+  --surface-container-high: #e9e5ee;
+  --outline: #75777f;
+
+  --background: #fcf8ff;
+  --foreground: #1a1c1e;
+  --muted: #f1eef7;
+  --muted-foreground: #565e71;
+  --border: #e3dfe7;
+  --ring: #094dcc;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #afc6ff;
+    --primary-strong: #8fb0ff;
+    --on-primary: #002e79;
+    --primary-container: #00449b;
+    --on-primary-container: #d9e2ff;
+
+    --secondary: #bddfe2;
+    --on-secondary: #264346;
+    --secondary-container: #14696a;
+    --on-secondary-container: #bddfe2;
+
+    --surface: #141218;
+    --surface-container: #211f26;
+    --on-surface: #e5e1e9;
+    --surface-container-high: #2b2930;
+    --outline: #8f9097;
+
+    --background: #141218;
+    --foreground: #e5e1e9;
+    --muted: #211f26;
+    --muted-foreground: #c0bdc4;
+    --border: #38343d;
+    --ring: #afc6ff;
+  }
+}
+
+@theme {
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-on-primary: var(--on-primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'PingFang SC',
+      'Microsoft YaHei', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
