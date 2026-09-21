@@ -19,7 +19,8 @@ export default defineConfig({
   },
   test: {
     environment: 'jsdom',
-    globals: false,
+    // 开启 globals 供 @testing-library/react 自动注册 afterEach(cleanup)
+    globals: true,
     setupFiles: ['./src/test/setup.ts'],
     include: ['src/**/*.{spec,test}.{ts,tsx}'],
   },

@@ -25,6 +25,25 @@ export const sc = {
       placeholder: '文档与知识的沉淀、管理（待实现）',
     },
   },
+  auth: {
+    signInTitle: '登录',
+    signUpTitle: '注册',
+    email: '邮箱',
+    password: '密码',
+    name: '昵称',
+    signIn: '登录',
+    signUp: '注册',
+    signOut: '登出',
+    noAccount: '还没有账号？',
+    goRegister: '去注册',
+    alreadyHaveAccount: '已有账号？',
+    goLogin: '去登录',
+    errors: {
+      invalidCredentials: '邮箱或密码不正确',
+      passwordTooShort: '密码至少 8 位',
+      emailInUse: '该邮箱已被注册',
+    },
+  },
 };
 
 export type Resource = typeof sc;

@@ -15,6 +15,9 @@ export interface AuthConfig {
  * 创建 Better Auth 实例，Drizzle + postgres-js 适配器。
  * Better Auth 依赖的 user / session / account / verification 表由其自身
  * 按需创建并升级，不进入我们手写的 schema。
+ *
+ * 会话策略：Better Auth 默认会话约 7 天；「记住我」由客户端 signIn.email 的
+ * rememberMe 参数控制（7d vs 30d），服务端无需额外配置。
  */
 export function createAuth(db: Db, config: AuthConfig) {
   return betterAuth({

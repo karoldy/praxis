@@ -6,6 +6,7 @@ import '@/i18n';
 import '@/styles/globals.css';
 import { router } from '@/router';
 import { queryClient } from '@/lib/query-client';
+import { AuthProvider } from '@/auth/auth-context';
 
 const rootEl = document.getElementById('root');
 if (!rootEl) {
@@ -14,8 +15,10 @@ if (!rootEl) {
 
 createRoot(rootEl).render(
   <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
+    <AuthProvider>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+    </AuthProvider>
   </StrictMode>,
 );

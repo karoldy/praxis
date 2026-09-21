@@ -1,7 +1,8 @@
 import { NavLink, Outlet } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { NotebookPen, GraduationCap, FolderOpen, type LucideIcon } from 'lucide-react';
+import { NotebookPen, GraduationCap, FolderOpen, LogOut, type LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useAuth } from '@/auth/auth-context';
 
 interface NavItem {
   to: string;
@@ -43,6 +44,7 @@ function NavItemLink({ item, nav }: { item: NavItem; nav: boolean }) {
  */
 export default function AppLayout() {
   const { t } = useTranslation();
+  const { user, signOut } = useAuth();
   return (
     <div className="flex h-dvh flex-col bg-background">
       <header className="flex h-16 shrink-0 items-center justify-between gap-3 border-b px-4">
@@ -52,9 +54,23 @@ export default function AppLayout() {
           </span>
           <span className="text-lg font-semibold">{t('common.brand')}</span>
         </div>
-        <span className="hidden text-sm text-muted-foreground sm:inline">
-          {t('common.motto')}
-        </span>
+        <div className="flex items-center gap-3">
+          <span className="hidden text-sm text-muted-foreground sm:inline">
+            {t('common.motto')}
+          </span>
+          <div className="flex items-center gap-2">
+            <span className="max-w-40 truncate text-sm font-medium">{user?.name}</span>
+            <button
+              type="button"
+              onClick={() => void signOut()}
+              title={t('auth.signOut')}
+              className="flex items-center gap-1 rounded-lg px-2 py-1 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              <LogOut className="size-4" aria-hidden />
+              <span className="hidden sm:inline">{t('auth.signOut')}</span>
+            </button>
+          </div>
+        </div>
       </header>
 
       <div className="flex flex-1 overflow-hidden">
