@@ -1,28 +1,29 @@
 # 知行（Praxis）
 
-学 · 做 · 考，一体贯通。
+Docs and agent skills hub. This is not application source.
 
 用户侧品牌：**知行** · 工程名：**Praxis**
 
-## 模块
+| Project | Stack |
+| --- | --- |
+| Web | Vite + React + shadcn |
+| API | NestJS + PostgreSQL |
+| App | React Native（不用 Expo / Expo Router） |
 
-- 笔记中心（学习中心）
-- 任务中心
-- 考试中心
+**Edit only these two places:**
 
-共用一个后端；Web 优先，App（React Native / Expo）目录预留。
+| What | Canonical path | Do not edit |
+| --- | --- | --- |
+| Skills | [`skills/`](skills/) | Do not add `.claude/` or `.agents/` |
+| Technical docs | [`docs/`](docs/) using the table below | Do not copy the same fact into more than one project folder |
 
-## 文档
+| Topic | Folder |
+| --- | --- |
+| Mobile app | [docs/app/](docs/app/) |
+| Web | [docs/web/](docs/web/) |
+| API | [docs/api/](docs/api/) |
+| True for every project (auth, API contract, design, release) | [docs/shared/](docs/shared/) |
 
-- [品牌与命名](./docs/branding.md)
-- [系统设计](./docs/superpowers/specs/2026-08-10-praxis-design.md)
+Catalog: [docs/index.md](docs/index.md). Add a page only when you have real content. Do not pre-create empty files.
 
-## 目录
-
-```text
-apps/api       NestJS API
-apps/web       Vite + React
-apps/mobile    React Native (Expo) — 预留
-packages/      shared / ui / config
-docs/          设计与品牌文档
-```
+Do not put `AGENTS.md`, `CLAUDE.md`, `.claude/`, or `.agents/` in the `app`, `web`, or `api` repos.
