@@ -13,7 +13,7 @@ Only two places. Everything else is an alias or an index.
 | `skills/<name>/SKILL.md` | Agent procedures. This is the only skill copy. |
 | `docs/...` | Technical docs. Follow the routing table. |
 
-Skills live only in `skills/`. Do not create `.claude/` or `.agents/`. Do not copy skills.
+Skills live only in `skills/`. `.agents/skills`, `.claude/skills`, and `.cursor/skills` are symlinks to that directory. Do not copy skills.
 
 Add a new doc page only when you have real content. Do not pre-create empty mirrors across project folders.
 

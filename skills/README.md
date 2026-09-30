@@ -1,6 +1,6 @@
 # Skills
 
-Edit only `skills/<name>/SKILL.md`. Do not add `.claude/` or `.agents/`.
+Edit only `skills/<name>/SKILL.md`. `.agents/skills`, `.claude/skills`, and `.cursor/skills` symlink here.
 
 Hub skills are short. Third-party skills may contain many `rules/` files — that is one skill, not many.
 

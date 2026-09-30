@@ -14,7 +14,7 @@ Docs and agent skills hub. This is not application source.
 
 | What | Canonical path | Do not edit |
 | --- | --- | --- |
-| Skills | [`skills/`](skills/) | Do not add `.claude/` or `.agents/` |
+| Skills | [`skills/`](skills/) | `.agents/skills`, `.claude/skills`, `.cursor/skills` only symlink here |
 | Technical docs | [`docs/`](docs/) using the table below | Do not copy the same fact into more than one project folder |
 
 | Topic | Folder |

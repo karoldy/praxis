@@ -11,7 +11,7 @@ AGENTS.md already selected the doc tree. Follow it. Do not duplicate that table 
 
 ## Where to write
 
-- Edit skills only under `skills/`. Do not create `.claude/` or `.agents/`.
+- Edit skills only under `skills/`. `.agents/skills`, `.claude/skills`, and `.cursor/skills` symlink there. Do not copy skills.
 - Facts used by more than one project → `docs/shared/`. Project pages only record differences and link.
 - Project-only facts → that project's folder under `docs/` (`api`, `web`, or `app`).
 - Update `docs/index.md` when adding or renaming a page.
